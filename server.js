@@ -1,53 +1,71 @@
-// server.js
-
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const dotenv = require('dotenv');
-const cors = require('cors');
-
-
-dotenv.config();
-
 const app = express();
-const PORT = process.env.PORT || 5000;
+const port = 2006;
+const path = require('path');
 
-app.use(cors());
-app.use(bodyParser.json());
-
-const mongoURI = process.env.MONGO_URI;
-if (!mongoURI) {
-    console.error('Error: MONGO_URI is not defined in the .env file');
-    process.exit(1); 
-
-mongoose.connect(mongoURI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-})
-.then(() => console.log('MongoDB connected'))
-.catch(err => console.error('MongoDB connection error:', err));
+mongoose.connect('mongodb://localhost:27017/medconsult')
+    .then(() => console.log('MongoDB Connected'))
+    .catch(err => console.error('MongoDB connection error:', err));
 
 const userSchema = new mongoose.Schema({
-    username: { type: String, required: true },
-    password: { type: String, required: true },
+    username: String,
+    email: String,
+    password: String,
+    phone_number: String,
 });
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model('users', userSchema);
 
-app.post('/login', async (req, res) => {
-    const { username, password } = req.body;
+app.use(express.static(path.join(__dirname))); 
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
+app.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname,'login.html'));
+});
+app.get('/signup', (req, res) => {
+    res.sendFile(path.join(__dirname,'signup.html'));
+});
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html')); 
+});
+
+app.post('/signup', async (req, res) => {
+    const { Username, email, password, phone_number } = req.body;
     try {
-        const user = await User.findOne({ username, password });
-
-        if (user) {
-            res.json({ success: true, message: 'Login successful' });
-        } else {
-            res.json({ success: false, message: 'Invalid credentials' });
-        }
-    } catch (error) {
-        res.status(500).json({ success: false, message: 'Server error' });
+        const newUser = new User({
+            username: Username,
+            email,
+            password,
+            phone_number,
+        });
+        await newUser.save();
+        return res.status(201).send('Signup successful');
+    } catch (err) {
+        console.error('Error during signup:', err);
+        return res.status(400).send('Error signing up');
     }
 });
 
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.post('/login', async (req, res) => {
+    const { username, password } = req.body;
+    try {
+        const user = await User.findOne({ username, password });
+        if (user) {
+      
+            return res.redirect('/');
+        } else {
+            return res.status(400).send('Invalid credentials');
+        }
+    } catch (err) {
+        console.error('Error during login:', err);
+        return res.status(500).send('Server error');
+    }
+});
+
+app.listen(port, () => {
+    console.log(`Server running on http://localhost:${port}`);
+});
