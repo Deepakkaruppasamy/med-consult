@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Blood Bank</title>
+    <img src="medical.jpg" width = "1600" height="200">    
+    <style>
+  /* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5; /* Light gray background */
+}
+
+.container {
+    max-width: 1200px; /* Increase max-width for better responsiveness */
+    margin: 0 auto; /* Center container */
+    padding: 0 20px; /* Add padding to the sides */
+}
+
+/* Header Styles */
+header {
+    background-color: #4CAF50; /* Dark green header */
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Navigation Styles */
+nav {
+    background-color: #333; /* Dark navigation bar */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center; /* Center the navigation links */
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+nav ul li a:hover {
+    background-color: #555; /* Darken on hover */
+}
+
+/* Section Styles */
+section {
+    padding: 20px;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #333; /* Dark footer */
+    color: white;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Typography */
+h1, h2, h3 {
+    color: #333;
+}
+
+p {
+    line-height: 1.6; 
+}
+
+/* Link Styles */
+a {
+    color: #4CAF50; /* Green links */
+    transition: color 0.3s ease; 
+}
+
+a:hover {
+    color: #2E8B57;
+}
+
+    
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Medical Consultant</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="about.html">About</a></li>
+            <li><a href="index.html">Index</a></li>
+                
+             <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="consultant.html">Consultant</a></li>
+        </ul>
+    </nav>
+    
+    <section id="about">
+    <header>
+    <h1>About Us</h1>
+    <nav>
+        <a href="index.html">Home</a> | <a href="services.html">Services</a> | <a href="contact.html">Contact</a>
+    </nav>
+</header>
+
+<main>
+    <section>
+        <h2>Who We Are</h2>
+        <p>We are a team of experienced medical professionals dedicated to providing high-quality healthcare consultancy services. With years of expertise in various medical specialties, we offer personalized consultations and assistance to individuals seeking medical guidance.</p>
+    </section>
+
+    <section>
+        <h2>Our Mission</h2>
+        <p>Our mission is to empower individuals to make informed healthcare decisions by providing them with reliable medical advice and support. We strive to foster a trusting relationship with our clients and ensure their well-being is our top priority.</p>
+    </section>
+
+    <section>
+        <h2>Why Choose Us</h2>
+        <ul>
+            <li>Expertise in diverse medical specialties</li>
+            <li>Personalized and compassionate care</li>
+            <li>Commitment to client satisfaction</li>
+            <li>Accessible and responsive communication</li>
+            <li>Focus on delivering accurate and up-to-date information</li>
+        </ul>
+    </section>
+    
+
+    <section id="services">
+            <h2>Our Services</h2>
+            <ul>
+                <li>Medical Consultation</li>
+                <li>Health Assessments</li>
+                <li>Second Opinions</li>
+                <li>Referrals</li>
+            </ul>
+        </section>
+  
+<div class="container">
+<section class="section">
+    <h2>Contact Information</h2>
+    <p>If you have any questions or would like to schedule an appointment, please feel free to contact us:</p>
+    <p>Email: GD@medicalconsultant.com</p>
+    <p>Phone: 123-456-7890</p>
+    <p>Address: 123 Medical Avenue, City, Country</p>
+
+<footer>
+        <p>&copy; 2024 Medical Consultant. All rights reserved.</p>
+    </footer>
+</body>
+</html> 
