@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Med Consult</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
     <style>
         body {
             background-color: rgb(0, 238, 255);
@@ -38,53 +39,51 @@
 </head>
 
 <body>
-
-    <header class="container">
-        <h1>Welcome to Our Med Consult</h1>
-    </header>
+  <header class="container">
+      <h1>Welcome to Our Med Consult</h1>
+  </header>
    
-    
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="#">Med Consult</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="consultant.html">Consultant</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link" href="fee.html">Consultation Fee</a></li>
-                    
-                </ul>
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="btn btn-link" href="login.html">Login</a></li>
-                    <li class="nav-item"><a class="btn btn-link" href="signup.html">Sign up</a></li>
-                    
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            MED
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="medicine.html">Medicine</a>
-                            <a class="dropdown-item" href="prices.html">Price</a>
-                          
-                            <label for="MED">Med:</label>
-                            <select id="websites">
-                                <option value="https://www.example.com">Medicine</option>
-                                <option value="https://www.google.com">Price</option>
-                             
-                            </select>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+          <a class="navbar-brand" href="#">Med Consult</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav mr-auto">
+                  <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                  <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                  <li class="nav-item"><a class="nav-link" href="consultant.html">Consultant</a></li>
+                  <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                  <li class="nav-item"><a class="nav-link" href="fee.html">Consultation Fee</a></li>
+                  
+              </ul>
+              <ul class="navbar-nav ml-auto">
+                  <li class="nav-item"><a class="btn btn-link" href="login.html">Login</a></li>
+                  <li class="nav-item"><a class="btn btn-link" href="signup.html">Sign up</a></li>
+                  
+                  <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          MED
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="medicine.html">Medicine</a>
+                          <a class="dropdown-item" href="prices.html">Price</a>
+                        
+                          <label for="MED">Med:</label>
+                          <select id="websites">
+                              <option value="https://www.example.com">Medicine</option>
+                              <option value="https://www.google.com">Price</option>
+                            
+                          </select>
+                      </div>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </nav>
 
     <div class="container mt-4">
         <h2 class="text-center">MedConsult</h2>
@@ -178,7 +177,15 @@
             </div>
         </div>
     </main>
+    <h2 id="welcome-msg" style="text-align: center; color: green;"></h2>
 
+    <script>
+      const username = localStorage.getItem("username");
+      if (username) {
+        document.getElementById("welcome-msg").textContent = `Welcome, ${username}!`;
+      }
+    </script>
+    
     <footer class="container mt-4">
         <p class="text-center">&copy; 2024 Medical Consultant. All rights reserved.</p>
     </footer>
