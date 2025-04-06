@@ -1,154 +1,311 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Medical Consultant</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body {
-            background-color: rgb(0, 238, 255);
-            background-image: url('consultant.jpg');
-            background-repeat: no-repeat;
-            background-size: cover;
-            color: #333; /* Set default text color */
-        }
+  <meta charset="UTF-8" />
+  <title>Consultants | MedConsult</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f0f7ff;
+      margin: 0;
+      padding: 0;
+    }
 
-        header {
-            padding: 50px 0;
-            text-align: center;
-        }
+    .navbar {
+      background-color: #e3f2fd;
+      padding: 10px 20px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
 
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
+    .navbar ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: flex-end;
+      gap: 20px;
+    }
 
-        nav ul li {
-            display: inline;
-            margin-right: 20px;
-        }
+    .navbar li {
+      display: inline;
+    }
 
-        .section {
-            margin-bottom: 50px;
-        }
+    .navbar a {
+      text-decoration: none;
+      color: #007bff;
+      font-weight: bold;
+    }
 
-        footer {
-            background-color: #f8f9fa; /* Light gray background color */
-            padding: 20px 0;
-            text-align: center;
-        }
+    .navbar a:hover {
+      text-decoration: underline;
+    }
 
-        .consultant {
-            margin-bottom: 30px;
-        }
+    h1 {
+      text-align: center;
+      margin: 20px 0;
+      font-size: 2rem;
+      color: #222;
+    }
 
-        .consultant img {
-            margin-bottom: 10px;
-        }
-    </style>
+    #doctors {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin: 30px auto;
+      max-width: 1200px;
+    }
+
+    .doctor-card {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      width: 250px;
+      text-align: center;
+    }
+
+    .doctor-card h3 {
+      margin: 0;
+      color: #0077cc;
+    }
+
+    .doctor-card p {
+      margin: 8px 0;
+      color: #555;
+    }
+
+    .doctor-card button {
+      padding: 10px 20px;
+      background-color: #00aaff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .doctor-card button:hover {
+      background-color: #0077cc;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.6);
+    }
+
+    .modal-content {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 300px;
+      position: relative;
+    }
+
+    .modal-content input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+    }
+
+    .modal-content button {
+      padding: 10px;
+      width: 100%;
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      border-radius: 6px;
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 16px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .view-btn {
+      display: block;
+      margin: 30px auto;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .view-btn:hover {
+      background-color: #218838;
+    }
+    #doctors {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 0 20px;
+  max-width: 1200px;
+  margin: 30px auto;
+}
+#doctors {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin: 30px auto;
+  max-width: 1200px;
+}
+
+  </style>
 </head>
-
 <body>
-    <header>
-        <div class="container">
-            <h1>Med Consult</h1>
-            
-        </div>
-    </header>
 
-    <nav class="navbar navbar-expand-sm bg-light">
-        <ul>
-            <li><a href="login.html">Login</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="Consultant.html">Consultant</a></li>
-            <li><a href="index.html">Back</a></li>
-        </ul>
-    </nav>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-sm bg-light">
+    <ul>
+      <li><a href="login.html">Login</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="Consultant.html">Consultant</a></li>
+      <li><a href="appointments.html"></a></li>
+      <li><a href="index.html">Back</a></li>
+    </ul>
+  </nav>
 
-    <main>
-        <div class="container">
-            <section id="services" class="section">
-                <h2 class="text-center mb-4">Our Services<h2>
-                <div class="row">
-                    <div class="col-md-6">
-                        <ul>
-                            <li>Medical Consultation</li>
-                            <li>Health Assessments</li>
-                            <li>Second Opinions</li>
-                            <li>Referrals</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
 
-            <section id="consultants" class="section">
-                <h2 class="text-center mb-4">Our Consultants</h2>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="consultant">
-                            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-                            <div class="container">
-                              <img src="2.jpg" class="img-circle" alt="Doctor 2" width="304" height="236"> 
-                            </div>
-                            <h3>Dr. Gowtham <h3>
-                            <p>Specialty: Pulmonology</p>
-                            <p>Dr. Gowtham is a board-certified internal medicine physician with over 15 years of experience in pulmonology.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="consultant">
-                            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-                            <div class="container">
-                              <img src="l.jpg" class="img-circle" alt="Doctor 2" width="304" height="236"> 
-                            </div>
-                            <h3>Dr. Anusree<h3>
-                            <p>Specialty: Neurology</p>
-                            <p>Dr. Anusree is a board-certified internal medicine physician with over 15 years of experience in neurology.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="consultant">
-                            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-                            <div class="container">
-                              <img src="deepak23.jpg" class="img-circle" alt="" width="350" height="350"> 
-                            </div>
-                            <h3>Dr. Deepak<h3>
-                            <p>Specialty: Cardiology</p>
-                            <p>Dr. Deepak is a renowned cardiologist known for her expertise in cardiovascular diseases.</p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="consultant">
-                            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-                            <div class="container">
-                              <img src="n.jpg" class="img-circle" alt="Doctor 4" width="350" height="350"> 
-                            </div>
 
-                            <h3>Dr. Nanditha<h3>
-                            <p>Specialty: Nephrology</p>
-                            <p>Dr. Nanditha is a nephrologist specializing in the diagnosis and treatment of kidney-related diseases.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </main>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2024 Medical Consultant. All rights reserved.</p>
-        </div>
-    </footer>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+
+
+
+
+  
+  <h1>Our Consultants</h1>
+
+  <div id="doctors">
+    <div class="doctor-card" data-name="Dr. Lawrence Espinoza">
+      <h3>Dr. Lawrence Espinoza</h3>
+      <p>Cardiologist</p>
+      <button onclick="openModal('Dr. Lawrence Espinoza')">Book Appointment</button>
+    </div>
+
+    <div class="doctor-card" data-name="Dr. Amelia Hart">
+      <h3>Dr. Amelia Hart</h3>
+      <p>Dermatologist</p>
+      <button onclick="openModal('Dr. Amelia Hart')">Book Appointment</button>
+    </div>
+
+    <div class="doctor-card" data-name="Dr. Ethan Wells">
+      <h3>Dr. Ethan Wells</h3>
+      <p>Neurologist</p>
+      <button onclick="openModal('Dr. Ethan Wells')">Book Appointment</button>
+    </div>
+
+    <div class="doctor-card" data-name="Dr. Olivia Carter">
+      <h3>Dr. Olivia Carter</h3>
+      <p>Orthopedic Surgeon</p>
+      <button onclick="openModal('Dr. Olivia Carter')">Book Appointment</button>
+    </div>
+
+    <div class="doctor-card" data-name="Dr. Noah Patel">
+      <h3>Dr. Noah Patel</h3>
+      <p>General Physician</p>
+      <button onclick="openModal('Dr. Noah Patel')">Book Appointment</button>
+    </div>
+
+    <div class="doctor-card" data-name="Dr. Ava Kim">
+      <h3>Dr. Ava Kim</h3>
+      <p>Pediatrician</p>
+      <button onclick="openModal('Dr. Ava Kim')">Book Appointment</button>
+    </div>
+  </div>
+
+  <button class="view-btn" onclick="window.location.href='appointments.html'">View Appointments</button>
+
+  <!-- Booking Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <h2>Book Appointment</h2>
+      <input type="text" id="patientName" placeholder="Your Name" required />
+      <input type="date" id="appointmentDate" required />
+      <input type="time" id="appointmentTime" required />
+      <button onclick="bookAppointment()">Book</button>
+    </div>
+  </div>
+
+  <script>
+ let selectedDoctor = "";
+
+function openModal(doctorName) {
+  selectedDoctor = doctorName;
+  document.getElementById("modal").style.display = "block";
+}
+
+function closeModal() {
+  document.getElementById("modal").style.display = "none";
+}
+
+function bookAppointment() {
+  const appointmentDate = document.getElementById("appointmentDate").value;
+  const appointmentTime = document.getElementById("appointmentTime").value;
+  const patientName = document.getElementById("patientName").value;
+
+  if (!patientName || !appointmentDate || !appointmentTime) {
+    alert("Please fill in all fields.");
+    return;
+  }
+
+  const bookingDate = new Date().toISOString().split("T")[0];
+  const bookingTime = new Date().toTimeString().split(" ")[0];
+
+  fetch("/appointments", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      doctor: selectedDoctor,
+      patient: patientName,
+      appointmentDate,
+      appointmentTime,
+      bookingDate,
+      bookingTime,
+    }),
+  })
+    .then((res) => {
+      if (!res.ok) {
+        if (res.headers.get("content-type")?.includes("application/json")) {
+          return res.json().then((err) => {
+            throw new Error(err.error || "Failed to book appointment.");
+          });
+        } else {
+          throw new Error("Unexpected server response. Please try again.");
+        }
+      }
+      return res.json();
+    })
+    .then((data) => {
+      alert("Appointment Booked!");
+      closeModal();
+    })
+    .catch((err) => {
+      console.error(err);
+      alert(err.message || "Error booking appointment. Please try again.");
+    });
+}
+
+   
+  </script>
 </body>
-
 </html>
