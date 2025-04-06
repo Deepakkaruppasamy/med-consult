@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
     <style>
         body {
             background-image: url('sign.jpg');
@@ -55,7 +56,8 @@
             <div class="col-md-6">
                 <div class="login-container">
                     <h2 class="text-center">Login</h2>
-                    <form id="login-form" action="http://localhost:2006/login" method="get">
+                    <form id="login-form" action="http://localhost:2006/login" method="post">
+
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Username" name="username" required>
                         </div>
@@ -70,7 +72,30 @@
             </div>
         </div>
     </div>
-
+    <script>
+        document.getElementById("login-form").addEventListener("submit", async function (e) {
+          e.preventDefault();
+          const form = e.target;
+          const data = {
+            username: form.username.value,
+            password: form.password.value,
+          };
+      
+          const response = await fetch("http://localhost:2006/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
+          });
+      
+          const result = await response.json();
+          if (response.ok) {
+            localStorage.setItem("username", result.username);
+            window.location.href = "index.html";
+          } else {
+            alert(result || "Login failed.");
+          }
+        });
+      </script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
